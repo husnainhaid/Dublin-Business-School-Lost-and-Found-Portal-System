@@ -21,3 +21,4 @@ reportForm.addEventListener('submit', async function (e) {
         image: imagePreview.src || null
     };
 
+});
