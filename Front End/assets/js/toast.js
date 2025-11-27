@@ -43,4 +43,19 @@ class ToastManager {
 
     return toast;
   }
+
+  /**
+   
+   * @private
+   */
+  createToast(message, type, duration, title) {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    
+    const icon = this.getIcon(type);
+
+    
+    const toastTitle = title || this.getDefaultTitle(type);
+  }
 }
