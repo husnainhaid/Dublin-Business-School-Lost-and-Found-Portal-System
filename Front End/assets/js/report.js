@@ -21,4 +21,18 @@ reportForm.addEventListener('submit', async function (e) {
         image: imagePreview.src || null
     };
 
+    if (!validateForm(formData)) return;
+
+    const submitBtn = reportForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    try {
+
+    }
+
+    catch (error) {
+
+    }
+
 });

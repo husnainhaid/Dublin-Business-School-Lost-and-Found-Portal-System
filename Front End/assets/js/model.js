@@ -40,5 +40,36 @@ class ModalManager {
         this.modal = this.overlay.querySelector('.modal');
     }
 
+    /**
+     
+     * @private
+     */
+    attachEventListeners() {
+        
+        const closeBtn = this.overlay.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => this.close());
+
+        
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === this.overlay) {
+                this.close();
+            }
+        });
+
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.close();
+            }
+        });
+
+        
+        this.modal.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+
+
     
 }
