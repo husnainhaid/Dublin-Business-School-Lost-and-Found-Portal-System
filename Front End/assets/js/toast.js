@@ -57,5 +57,17 @@ class ToastManager {
 
     
     const toastTitle = title || this.getDefaultTitle(type);
-  }
+
+toast.innerHTML = `
+      <div class="toast-icon">${icon}</div>
+      <div class="toast-content">
+        <div class="toast-title">${toastTitle}</div>
+        <div class="toast-message">${message}</div>
+      </div>
+      <button class="toast-close" aria-label="Close">&times;</button>
+      ${duration > 0 ? `<div class="toast-progress" style="animation-duration: ${duration}ms;"></div>` : ''}
+    `;
+
+ } 
+  
 }
