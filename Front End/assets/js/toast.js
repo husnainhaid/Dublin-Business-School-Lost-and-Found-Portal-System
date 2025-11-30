@@ -67,7 +67,13 @@ toast.innerHTML = `
       <button class="toast-close" aria-label="Close">&times;</button>
       ${duration > 0 ? `<div class="toast-progress" style="animation-duration: ${duration}ms;"></div>` : ''}
     `;
+ 
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+      this.dismiss(toast);
+    });
 
+    return toast;
  } 
   
 }
