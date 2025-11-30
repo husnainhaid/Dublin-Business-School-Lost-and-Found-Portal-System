@@ -63,4 +63,16 @@ function validateForm(data) {
         document.getElementById('studentName').focus();
         return false;
     }
+
+    if (!data.itemName || data.itemName.length < 3) {
+        showToast('Item name must be at least 3 characters', 'error');
+        document.getElementById('itemName').focus();
+        return false;
+    }
+
+    if (!data.description || data.description.length < 10) {
+        showToast('Description must be at least 10 characters', 'error');
+        document.getElementById('description').focus();
+        return false;
+    }
 }
