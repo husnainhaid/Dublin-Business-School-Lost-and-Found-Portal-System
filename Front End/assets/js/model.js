@@ -69,7 +69,17 @@ class ModalManager {
         });
     }
 
-
+  /**
+     * 
+     * @param {string} title 
+     * @param {string|HTMLElement} content 
+     * @param {string|HTMLElement} footer 
+     */
+    open(title, content, footer = '') {
+        const titleElement = this.overlay.querySelector('.modal-title');
+        const bodyElement = this.overlay.querySelector('.modal-body');
+        const footerElement = this.overlay.querySelector('.modal-footer');
+    }
 
     
 }
