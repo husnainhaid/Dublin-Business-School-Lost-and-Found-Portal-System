@@ -76,15 +76,15 @@ function validateForm(data) {
         return false;
     }
    //
-   if (!data.age) {
-        showToast('Please select a age', 'error');
-        document.getElementById('age').focus();
+   if (!data.location) {
+        showToast('Please select a location', 'error');
+        document.getElementById('location').focus();
         return false;
     }
 
-    if (!data.lost) {
-        showToast('Please select the  lost', 'error');
-        document.getElementById('Lost').focus();
+    if (!data.dateLost) {
+        showToast('Please select the date lost', 'error');
+        document.getElementById('dateLost').focus();
         return false;
     }
 
@@ -92,25 +92,25 @@ function validateForm(data) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (selected > today) {
-        showToast('lost cannot be in the future', 'error');
-        document.getElementById('Lost').focus();
+        showToast('Date cannot be in the future', 'error');
+        document.getElementById('dateLost').focus();
         return false;
     }
 
     if (!data.category) {
-        showToast('it select a list', 'error');
-        document.getElementById('list').focus();
+        showToast('Please select a category', 'error');
+        document.getElementById('category').focus();
         return false;
     }
 
     if (!isValidEmail(data.email)) {
-        showToast('Please enter a valid D email', 'error');
+        showToast('Please enter a valid DBS email', 'error');
         document.getElementById('email').focus();
         return false;
     }
 
     if (!data.phone || data.phone.length < 7) {
-        showToast('Please enter a  phone number', 'error');
+        showToast('Please enter a  valid  phone number', 'error');
         document.getElementById('phone').focus();
         return false;
     }
