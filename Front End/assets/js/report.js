@@ -75,4 +75,52 @@ function validateForm(data) {
         document.getElementById('description').focus();
         return false;
     }
+   //
+   if (!data.age) {
+        showToast('Please select a age', 'error');
+        document.getElementById('age').focus();
+        return false;
+    }
+
+    if (!data.lost) {
+        showToast('Please select the  lost', 'error');
+        document.getElementById('Lost').focus();
+        return false;
+    }
+
+    const selected = new Date(data.dateLost);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selected > today) {
+        showToast('lost cannot be in the future', 'error');
+        document.getElementById('Lost').focus();
+        return false;
+    }
+
+    if (!data.category) {
+        showToast('it select a list', 'error');
+        document.getElementById('list').focus();
+        return false;
+    }
+
+    if (!isValidEmail(data.email)) {
+        showToast('Please enter a valid D email', 'error');
+        document.getElementById('email').focus();
+        return false;
+    }
+
+    if (!data.phone || data.phone.length < 7) {
+        showToast('Please enter a  phone number', 'error');
+        document.getElementById('phone').focus();
+        return false;
+    }
+
+    return true;
+
+    
+
+
+
+
+
 }
