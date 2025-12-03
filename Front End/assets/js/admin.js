@@ -56,6 +56,14 @@ async function loadItems() {
 function renderTable() {
     itemsTableBody.innerHTML = "";
 
-   
+    if (allItems.length === 0) {
+        noItems.classList.remove("hidden");
+        return;
+    }
+
+    noItems.classList.add("hidden");
+
+    allItems.forEach(item => {
+        itemsTableBody.appendChild(createRow(item));
     });
 }
