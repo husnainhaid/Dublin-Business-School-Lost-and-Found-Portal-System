@@ -52,18 +52,10 @@ async function loadItems() {
         console.error("Error loading items:", err);
     }
 }
-
+//# Function resource get from :https://www.rdocumentation.org/packages/shiny/versions/0.8.0/topics/renderTable 
 function renderTable() {
     itemsTableBody.innerHTML = "";
 
-    if (allItems.length === 0) {
-        noItems.classList.remove("hidden");
-        return;
-    }
-
-    noItems.classList.add("hidden");
-
-    allItems.forEach(item => {
-        itemsTableBody.appendChild(createRow(item));
+   
     });
 }

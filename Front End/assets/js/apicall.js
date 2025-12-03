@@ -1,7 +1,8 @@
+const BASE_URL = "http://localhost:5000";
 
-const API_BASE_URL = "http://localhost:5000/api/items";
-
-
+/* 
+   CREATE ITEM (Report Form)
+ */
 export async function createItem(data) {
     const response = await fetch(`${BASE_URL}/items`, {
         method: "POST",
@@ -14,7 +15,7 @@ export async function createItem(data) {
 
 /* 
    GET ALL ITEMS (Admin Dashboard)
- */
+*/
 export async function getItems() {
     const response = await fetch(`${BASE_URL}/items`);
     return await response.json();
