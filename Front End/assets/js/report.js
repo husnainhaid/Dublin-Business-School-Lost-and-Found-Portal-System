@@ -124,3 +124,16 @@ function validateForm(data) {
 
 
 }
+
+
+function isValidEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+
+document.getElementById('description').addEventListener('input', function () {
+    this.style.height = 'auto';
+    this.style.height = Math.max(this.scrollHeight, 120) + 'px';
+});
+
