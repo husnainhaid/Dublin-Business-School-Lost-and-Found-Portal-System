@@ -75,5 +75,48 @@ toast.innerHTML = `
 
     return toast;
  } 
+
+ /**
+   * Get default title for toast type
+   * @private
+   */
+  getDefaultTitle(type) {
+    const titles = {
+      success: 'Success',
+      error: 'Error',
+      warning: 'Warning',
+      info: 'Information'
+    };
+    return titles[type] || 'Notification';
+  }
+
+  /**   Reference:https://chatgpt.com/share/69305a74-8ba8-800d-8899-67d61d90987b :get code from chatpt to tosat functions
+   * 
+   * @param {HTMLElement} toast
+   */
+  dismiss(toast) {
+    toast.classList.add('removing');
+    
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+      
+      // 
+      const index = this.toasts.indexOf(toast);
+      if (index > -1) {
+        this.toasts.splice(index, 1);
+      }
+    }, 300); 
+  }
+
+  /**
+   * 
+   */
+  dismissAll() {
+    this.toasts.forEach(toast => {
+      this.dismiss(toast);
+    });
+  }
   
 }
