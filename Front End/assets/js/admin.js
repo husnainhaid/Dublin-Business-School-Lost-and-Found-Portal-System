@@ -16,3 +16,39 @@
 
      });
 })();
+//# admin.js script:
+import { getItems, updateItem, deleteItem } from "./apiCall.js";
+
+let allItems = [];
+
+
+const itemsTableBody = document.getElementById("itemsTableBody");
+const noItems = document.getElementById("noItems");
+
+
+document.addEventListener("DOMContentLoaded", loadItems);
+
+
+async function loadItems() {
+    try {
+        const data = await getItems();
+
+        allItems = data.map(item => ({
+            id: item.item_id,
+            student_name: item.student_name,
+            item_name: item.item_name,
+            description: item.description,
+            location: item.location,
+            date_lost: item.date_lost,
+            category: item.category,
+            email: item.student_email,
+            phone: item.phone_number,
+            status: item.status
+        }));
+
+        renderTable();
+
+    } catch (err) {
+        console.error("Error loading items:", err);
+    }
+}
