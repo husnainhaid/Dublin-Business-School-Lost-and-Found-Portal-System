@@ -83,7 +83,19 @@ function createRow(item) {
         <td>${escapeHtml(item.email)}</td>
         <td>${escapeHtml(item.phone)}</td>
 
-        
+                <td>
+            <span class="badge ${getStatusClass(item.status)}">${item.status}</span>
+        </td>
+
+        <td>
+            <button class="btn btn-sm btn-warning update-status-btn" data-id="${item.id}" data-status="${item.status}" data-item-name="${escapeHtml(item.item_name)}">
+                🔄
+            </button>
+
+            <button class="btn btn-sm btn-danger delete-item-btn" data-id="${item.id}" data-item-name="${escapeHtml(item.item_name)}">
+                🗑️
+            </button>
+        </td>
     `;
 
     return row;
