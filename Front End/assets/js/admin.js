@@ -67,3 +67,24 @@ function renderTable() {
         itemsTableBody.appendChild(createRow(item));
     });
 }
+
+//  code from Chatgpt within i put my attributes  to build Table row
+function createRow(item) {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>#${item.id}</td>
+        <td>${escapeHtml(item.student_name)}</td>
+        <td>${escapeHtml(item.item_name)}</td>
+        <td>${escapeHtml(item.description)}</td>
+        <td>${escapeHtml(item.location)}</td>
+        <td>${formatDate(item.date_lost)}</td>
+        <td>${escapeHtml(item.category)}</td>
+        <td>${escapeHtml(item.email)}</td>
+        <td>${escapeHtml(item.phone)}</td>
+
+        
+    `;
+
+    return row;
+}
