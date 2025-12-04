@@ -1,3 +1,15 @@
+//Added auto-loading for toast CSS via loadToastCSS() https://chatgpt.com/c/69305867-6b3c-8331-bed3-f1d795077f44
+(function loadToastCSS() {
+  const cssPath = "assets/css/toast.css";
+
+  if (!document.querySelector(`link[href="${cssPath}"]`)) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cssPath;
+    document.head.appendChild(link);
+  }
+})();
+
 class ToastManager {
   constructor() {
     this.container = null;

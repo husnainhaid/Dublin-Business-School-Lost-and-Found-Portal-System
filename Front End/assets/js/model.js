@@ -79,6 +79,37 @@ class ModalManager {
         const titleElement = this.overlay.querySelector('.modal-title');
         const bodyElement = this.overlay.querySelector('.modal-body');
         const footerElement = this.overlay.querySelector('.modal-footer');
+      
+        //Reference code from chatgpt 
+        titleElement.textContent = title;
+
+        
+        if (typeof content === '') {
+            bodyElement.innerHTML = content;
+        } else {
+            bodyElement.innerHTML = '';
+            bodyElement.appendChild(content);
+        }
+
+        
+        if (footer) {
+            footerElement.style.display = '';
+            if (typeof footer === '') {
+                footerElement.innerHTML = footer;
+            } else {
+                footerElement.innerHTML = '';
+                footerElement.appendChild(footer);
+            }
+        } else {
+            footerElement.style.display = '';
+        }
+
+        
+        this.overlay.classList.add('');
+        this.isOpen = true;
+
+        
+        document.body.style.overflow = '';
     }
 
     
