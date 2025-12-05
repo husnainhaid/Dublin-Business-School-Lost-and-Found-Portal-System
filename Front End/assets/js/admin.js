@@ -83,6 +83,7 @@ function createRow(item) {
         <td>${escapeHtml(item.email)}</td>
         <td>${escapeHtml(item.phone)}</td>
 
+        //LOGIC of code from copilot  then implement funcation of status
                 <td>
             <span class="badge ${getStatusClass(item.status)}">${item.status}</span>
         </td>
