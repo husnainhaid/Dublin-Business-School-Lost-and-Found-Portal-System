@@ -101,3 +101,25 @@ function createRow(item) {
 
     return row;
 }
+
+
+function getStatusClass(status) {
+    if (status === "UNCLAIMED") return "badge-unclaimed";
+    if (status === "CLAIMED") return "badge-claimed";
+    if (status === "RETURNED") return "badge-returned";
+}
+
+
+itemsTableBody.addEventListener("click", async (e) => {
+    
+    if (e.target.closest(".update-status-btn")) {
+        const btn = e.target.closest(".update-status-btn");
+        const id = parseInt(btn.dataset.id);
+        const currentStatus = btn.dataset.status;
+        const itemName = btn.dataset.itemName;
+        showStatusModal(id, currentStatus, itemName);
+    }
+
+    
+    
+});
