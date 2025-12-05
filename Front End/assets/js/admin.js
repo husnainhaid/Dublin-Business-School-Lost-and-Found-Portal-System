@@ -121,5 +121,10 @@ itemsTableBody.addEventListener("click", async (e) => {
     }
 
     
-    
+    if (e.target.closest(".delete-item-btn")) {
+        const btn = e.target.closest(".delete-item-btn");
+        const id = parseInt(btn.dataset.id);
+        const itemName = btn.dataset.itemName;
+        showDeleteModal(id, itemName);
+    }
 });
