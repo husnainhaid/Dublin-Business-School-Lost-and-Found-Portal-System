@@ -103,3 +103,14 @@ class ToastManager {
   
   
 }
+const toastManager = new ToastManager();
+
+function showToast(message, type = "info", duration = 4000, title = "") {
+  return toastManager.show(message, type, duration, title);
+}
+
+
+export { showToast, ToastManager };
+
+
+window.showToast = showToast;
