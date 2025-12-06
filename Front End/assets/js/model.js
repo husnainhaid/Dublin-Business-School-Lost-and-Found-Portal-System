@@ -69,7 +69,7 @@ class ModalManager {
         });
     }
 
-  /**
+    /**
      * 
      * @param {string} title 
      * @param {string|HTMLElement} content 
@@ -79,12 +79,12 @@ class ModalManager {
         const titleElement = this.overlay.querySelector('.modal-title');
         const bodyElement = this.overlay.querySelector('.modal-body');
         const footerElement = this.overlay.querySelector('.modal-footer');
-      
-        //Reference code from chatgpt 
+
+        
         titleElement.textContent = title;
 
         
-        if (typeof content === '') {
+        if (typeof content === 'string') {
             bodyElement.innerHTML = content;
         } else {
             bodyElement.innerHTML = '';
@@ -93,23 +93,23 @@ class ModalManager {
 
         
         if (footer) {
-            footerElement.style.display = '';
-            if (typeof footer === '') {
+            footerElement.style.display = 'flex';
+            if (typeof footer === 'string') {
                 footerElement.innerHTML = footer;
             } else {
                 footerElement.innerHTML = '';
                 footerElement.appendChild(footer);
             }
         } else {
-            footerElement.style.display = '';
+            footerElement.style.display = 'none';
         }
 
         
-        this.overlay.classList.add('');
+        this.overlay.classList.add('active');
         this.isOpen = true;
 
         
-        document.body.style.overflow = '';
+        document.body.style.overflow = 'hidden';
     }
 
     
