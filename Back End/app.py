@@ -1,14 +1,25 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_cors import CORS
-from database import get_db
-import sqlite3
+from database import create_tables
 
+# 
+# INITIALIZE FLASK APP
+# 
 app = Flask(__name__)
-CORS(app)   # Allow frontend to call API without issues
+CORS(app)  # Allows frontend JS to call backend API
 
-@app.post("/api/items")
-def create_item():
-    data = request.json
+# Create SQL tables if they do not exist
+create_tables()
 
-    required = ["student_name", "item_name", "description", "location",
-                "date_lost", "category", "student_email", "phone"]
+
+# 
+# IMPORT ROUTES (after app is created)
+# 
+from routes import *
+
+
+# 
+# RUN THE SERVER
+# 
+if __name__ == "__main__":
+    app.run(debug=True)
