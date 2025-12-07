@@ -17,7 +17,7 @@
      });
 })();
 //# admin.js script:
-import { getItems, updateItem, deleteItem } from "./apiCall.js";
+import { getItems, updateItem, deleteItem } from "./apicall.js";
 
 let allItems = [];
 
@@ -127,4 +127,42 @@ itemsTableBody.addEventListener("click", async (e) => {
         const itemName = btn.dataset.itemName;
         showDeleteModal(id, itemName);
     }
+
+
+/*
+   UPDATE STATUS MODAL
+*/
+//code from chatgpt: https://chatgpt.com/c/69305867-6b3c-8331-bed3-f1d795077f44 that implement modal logic  structure
+function showStatusModal(id, currentStatus, itemName) {
+    
+    const modalHTML = `
+        <div class="modal-overlay" id="statusModal" style="display: flex;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Update Status - ${escapeHtml(itemName)}</h2>
+                    <button class="modal-close" id="closeStatusModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-bottom: 1rem; color: #6b7280;">
+                        Current status: <strong>${currentStatus}</strong>
+                    </p>
+                    <label for="newStatus" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">
+                        Select New Status
+                    </label>
+                    <select id="newStatus" class="form-select" style="width: 100%;">
+                        <option value="UNCLAIMED" ${currentStatus === 'UNCLAIMED' ? 'selected' : ''}>Unclaimed</option>
+                        <option value="CLAIMED" ${currentStatus === 'CLAIMED' ? 'selected' : ''}>Claimed</option>
+                        <option value="RETURNED" ${currentStatus === 'RETURNED' ? 'selected' : ''}>Returned</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancelStatusBtn">Cancel</button>
+                    <button class="btn btn-primary" id="updateStatusBtn">Update Status</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+   
+}
 });
