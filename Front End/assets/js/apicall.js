@@ -23,7 +23,7 @@ export async function getItems() {
 
 ///Reference:https://github.com/prince-c11/lost-found-management   in that project i get the idea from that then make logic of code by chatgpt
 /* 
-   UPDATE ITEM (Only STATUS or fields used in admin.js)
+   UPDATE ITEM (Only STATUS or fields used  admin.js)
  */
 export async function updateItem(id, data) {
     const response = await fetch(`${BASE_URL}/items/${id}`, {
@@ -35,13 +35,3 @@ export async function updateItem(id, data) {
     return await response.json();
 }
 
-/* 
-   DELETE ITEM (Admin)
- */
-export async function deleteItem(id) {
-    const response = await fetch(`${BASE_URL}/items/${id}`, {
-        method: "DELETE"
-    });
-
-    return await response.json();
-}
