@@ -41,3 +41,60 @@
             <h1 class="page-title">Admin Dashboard</h1>
             <p class="page-subtitle">Manage lost and found items</p>
         </div>
+
+         <!-- Items Table -->
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student Name</th>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Date Lost</th>
+                        <th>Category</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="itemsTableBody">
+                   
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- No Items Message -->
+        <div id="noItems" class="hidden"
+            style="text-align: center; padding: 3rem; background: white; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📋</div>
+            <h3 style="font-size: 1.5rem; color: #374151; margin-bottom: 0.5rem;">No Items Found</h3>
+            <p style="color: #6b7280;">No items match your search criteria</p>
+        </div>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                &copy; 2025 Dublin Business School. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/model.js"></script>
+
+    <script src="assets/js/admin.js" type="module"></script>
+    <script>
+        
+        document.getElementById('navToggle').addEventListener('click', function () {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
