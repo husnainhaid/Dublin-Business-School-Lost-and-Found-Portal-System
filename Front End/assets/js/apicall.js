@@ -34,4 +34,14 @@ export async function updateItem(id, data) {
 
     return await response.json();
 }
+/* 
+   DELETE ITEM (Admin Dashboard)
+ */
+export async function deleteItem(id) {
+    const response = await fetch(`${BASE_URL}/items/${id}`, {
+        method: "DELETE"
+    });
+
+    return await response.json();
+}
 
