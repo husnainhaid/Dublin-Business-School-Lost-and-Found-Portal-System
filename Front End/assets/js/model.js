@@ -112,5 +112,38 @@ class ModalManager {
         document.body.style.overflow = 'hidden';
     }
 
-    
+     /**
+     * 
+     */
+    close() {
+        this.overlay.classList.remove('active');
+        this.isOpen = false;
+
+        
+        document.body.style.overflow = '';
+    }
+
+    /**
+     
+     * @param {string} title 
+     * @param {string} message 
+     * @param {Function} onConfirm 
+     * @param {Function} onCancel 
+     */
+    confirm(title, message, onConfirm, onCancel = null) {
+        const content = `<p style="font-size: 1rem; color: #4b5563; line-height: 1.6;">${message}</p>`;
+
+        const footer = document.createElement('div');
+        footer.style.display = 'flex';
+        footer.style.gap = '1rem';
+        footer.style.justifyContent = 'flex-end';
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'btn btn-secondary';
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.onclick = () => {
+            this.close();
+            if (onCancel) onCancel();
+        };
+    }
 }
