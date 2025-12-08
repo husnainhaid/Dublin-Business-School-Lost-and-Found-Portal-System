@@ -20,27 +20,28 @@ def add_item():
     item_id = create_item(data)
     return jsonify({"success": True, "item_id": item_id, "Status": "Item reported successfully! Admin will review it soon."})
 
-@app.route('/edit_item/<int:item_id>', methods=['GET', 'POST'])
-@login_required
-def edit_item(item_id):
-    item = Item.query.get_or_404(item_id)
+# 
+# READ ALL ITEMS (GET /items)
+# Called by admin dashboard to show the items table
+# 
+@app.get("/items")
+def list_items():
+    items = get_all_items()
+    return jsonify(items)
 
-    if request.method == 'POST':
-        item.name = request.form['name']
-        item.description = request.form['description']
-        item.category_id = request.form['category']
-        item.status = request.form['status']
-        item.date = request.form['date']
-        image_file = request.files['image_file']
 
-        if image_file:
-            image_filename = secure_filename(image_file.filename)
-            image_file.save(f'static/images/{image_filename}')
-            item.image_file = image_filename
+# 
+# UPDATE ITEM STATUS (PUT /items/<id>)
+# Called when admin updates CLAIMED / UNCLAIMED / RETURNED
+# 
+@app.put("/items/<int:item_id>")
+def update_status(item_id):
+    data = request.json
+    new_status = data.get("status")
 
-        db.session.commit()
-        flash('Item updated successfully.', 'success')
-        return redirect(url_for('home_page'))
+    if not new_status:
+        return jsonify({"success": False, "error": "No status provided"}), 400
 
-    categories = Category.query.all()
-    return render_template('edit_item.html', item=item, categories=categories)
+    updated = update_item_status(item_id, new_status)
+
+    return jsonify({"success": updated})
