@@ -145,5 +145,19 @@ class ModalManager {
             this.close();
             if (onCancel) onCancel();
         };
+        
+        const confirmBtn = document.createElement('button');
+        confirmBtn.className = 'btn btn-primary';
+        confirmBtn.textContent = 'Confirm';
+        confirmBtn.onclick = () => {
+            this.close();
+            if (onConfirm) onConfirm();
+        };
+
+        footer.appendChild(cancelBtn);
+        footer.appendChild(confirmBtn);
+
+        this.open(title, content, footer);
     }
+    
 }
