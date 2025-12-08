@@ -183,3 +183,31 @@ function showStatusModal(id, currentStatus, itemName) {
     });
    
 }
+
+/* 
+   Reference code from chatgpt to Added new functions to close and update status modal in closeStatusModal and updateStatusFromModal`
+*/
+function closeStatusModal() {
+    const modal = document.getElementById('statusModal');
+    if (modal) {
+        modal.remove();
+    }
+    document.body.style.overflow = '';
+}
+
+/* 
+   
+ */
+async function updateStatusFromModal(id) {
+    const newStatus = document.getElementById('newStatus').value;
+
+    const result = await updateItem(id, { status: newStatus });
+
+    if (result.success) {
+        showToast("Status updated successfully check your email", "success");
+        closeStatusModal();
+        loadItems();
+    } else {
+        showToast("Failed to update status", "error");
+    }
+}
