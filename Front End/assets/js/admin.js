@@ -18,7 +18,7 @@
 })();
 //# admin.js script:
 import { getItems, updateItem, deleteItem } from "./apicall.js";
-
+import { showToast } from "./toast.js";
 let allItems = [];
 
 
@@ -127,7 +127,7 @@ itemsTableBody.addEventListener("click", async (e) => {
         const itemName = btn.dataset.itemName;
         showDeleteModal(id, itemName);
     }
-
+});
 
 /*
    UPDATE STATUS MODAL
@@ -162,7 +162,24 @@ function showStatusModal(id, currentStatus, itemName) {
             </div>
         </div>
     `;
+      
+    const existingModal = document.getElementById('statusModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
 
+    document.body.style.overflow = 'hidden';
+
+    document.getElementById('closeStatusModal').addEventListener('click', closeStatusModal);
+    document.getElementById('cancelStatusBtn').addEventListener('click', closeStatusModal);
+    document.getElementById('updateStatusBtn').addEventListener('click', () => updateStatusFromModal(id));
+
+    
+    document.getElementById('statusModal').addEventListener('click', (e) => {
+        if (e.target.id === 'statusModal') {
+            closeStatusModal();
+        }
+    });
    
 }
-});
