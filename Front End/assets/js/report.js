@@ -1,4 +1,4 @@
-// Reference:https://chatgpt.com/c/69305867-6b3c-8331-bed3-f1d795077f44  get code from report from there within attributtes implemented
+// Reference:https://chatgpt.com/c/69305867-6b3c-8331-bed3-f1d795077f44  update  code of  report full   within attributtes implemented and accordint to structure 
 import { showToast } from "./toast.js";
 import { createItem } from "./apicall.js";
 
