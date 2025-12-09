@@ -159,5 +159,62 @@ class ModalManager {
 
         this.open(title, content, footer);
     }
+     
+
+
+     /**
+     
+     * @param {string} title 
+     * @param {string} message 
+     * @param {Function} onClose 
+     */
+    alert(title, message, onClose = null) {
+        const content = `<p style="font-size: 1rem; color: #4b5563; line-height: 1.6;">${message}</p>`;
+
+        const footer = document.createElement('div');
+        footer.style.display = 'flex';
+        footer.style.justifyContent = 'flex-end';
+
+        const okBtn = document.createElement('button');
+        okBtn.className = 'btn btn-primary';
+        okBtn.textContent = 'OK';
+        okBtn.onclick = () => {
+            this.close();
+            if (onClose) onClose();
+        };
+
+        footer.appendChild(okBtn);
+
+        this.open(title, content, footer);
+    }
+    
     
 }
+
+
+const modalManager = new ModalManager();
+
+/**
+ 
+ */
+function openModal(title, content, footer = '') {
+    modalManager.open(title, content, footer);
+}
+
+function closeModal() {
+    modalManager.close();
+}
+
+function confirmModal(title, message, onConfirm, onCancel = null) {
+    modalManager.confirm(title, message, onConfirm, onCancel);
+}
+
+function alertModal(title, message, onClose = null) {
+    modalManager.alert(title, message, onClose);
+}
+
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { ModalManager, openModal, closeModal, confirmModal, alertModal };
+}
+
