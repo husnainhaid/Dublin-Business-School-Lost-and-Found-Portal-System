@@ -163,7 +163,8 @@ class ModalManager {
 
 
      /**
-     
+     add alert function with Copilot AI(Claude) help
+
      * @param {string} title 
      * @param {string} message 
      * @param {Function} onClose 
@@ -195,7 +196,8 @@ class ModalManager {
 const modalManager = new ModalManager();
 
 /**
- 
+ add  function openModal ,closeModal,ConfrimModal and alert modal created with Copilot AI(Claude) help
+
  */
 function openModal(title, content, footer = '') {
     modalManager.open(title, content, footer);
