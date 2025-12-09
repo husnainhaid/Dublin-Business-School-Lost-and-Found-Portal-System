@@ -211,3 +211,123 @@ async function updateStatusFromModal(id) {
         showToast("Failed to update status", "error");
     }
 }
+
+
+ var focused;
+
+        // Records the currently focused element so state can be returned
+        // after the modal closes
+        iface.beforeShow(function getActiveFocus() {
+            focused = document.activeElement;
+        });
+
+        // Shift focus into the modal
+        iface.afterShow(function focusModal() {
+            if ( isEnabled() ) {
+                var focusable = firstFocusable(iface.modalElem());
+                if ( focusable ) {
+                    focusable.focus();
+                }
+            }
+        });
+
+        // Restore the previously focused element when the modal closes
+        iface.afterClose(function returnFocus() {
+            if ( isEnabled() && focused ) {
+                focused.focus();
+            }
+            focused = null;
+        });
+
+        // Capture tab key presses and loop them within the modal
+        tabKey.watch(function tabKeyPress (event) {
+            if ( isEnabled() && iface.isVisible() ) {
+                var first = firstFocusable(iface.modalElem());
+                var last = lastFocusable(iface.modalElem());
+
+                var from = event.shiftKey ? first : last;
+                if ( from === document.activeElement ) {
+                    (event.shiftKey ? last : first).focus();
+                    event.preventDefault();
+                }
+            }
+        });
+    }
+/**https://github.com/Nycto/PicoModal/blob/master/src/picoModal.js get the code logic  from that template to show delete confirmation proper */
+    /** Manages setting the 'overflow: hidden' on the body tag */
+    function manageBodyOverflow(iface, isEnabled) {
+        var origOverflow;
+        var body = new Elem(document.body);
+
+        iface.beforeShow(function () {
+            // Capture the current values so they can be restored
+            origOverflow = body.elem.style.overflow;
+
+            if (isEnabled()) {
+                body.stylize({ overflow: "hidden" });
+            }
+        });
+
+        iface.afterClose(function () {
+            body.stylize({ overflow: origOverflow });
+        });
+    }
+
+    /**
+     * Displays a modal
+     */
+    return function picoModal(options) {
+
+        if ( isString(options) || isNode(options) ) {
+            options = { content: options };
+        }
+
+        var afterCreateEvent = observable();
+        var beforeShowEvent = observable();
+        var afterShowEvent = observable();
+        var beforeCloseEvent = observable();
+        var afterCloseEvent = observable();
+
+        /**
+         * Returns a named option if it has been explicitly defined. Otherwise,
+         * it returns the given default value
+         */
+        function getOption ( opt, defaultValue ) {
+            var value = options[opt];
+            if ( typeof value === "function" ) {
+                value = value( defaultValue );
+            }
+            return value === undefined ? defaultValue : value;
+        }
+
+
+        // The various DOM elements that constitute the modal
+        var modalElem = build.bind(window, 'modal');
+        var shadowElem = build.bind(window, 'overlay');
+        var closeElem = build.bind(window, 'close');
+
+        // This will eventually contain the modal API returned to the user
+        var iface;
+
+
+        /** Hides this modal */
+        function forceClose (detail) {
+            shadowElem().hide();
+            modalElem().hide();
+            afterCloseEvent.trigger(iface, detail);
+        }
+
+        /** Gracefully hides this modal */
+        function close (detail) {
+            if ( beforeCloseEvent.trigger(iface, detail) ) {
+                forceClose(detail);
+            }
+        }
+
+        /** Wraps a method so it returns the modal interface */
+        function returnIface ( callback ) {
+            return function () {
+                callback.apply(this, arguments);
+                return iface;
+            };
+        }
