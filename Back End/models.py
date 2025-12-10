@@ -43,36 +43,36 @@ def get_all_items():
     return items
 
 #Referene from template:https://github.com/prince-c11/lost-found-management/blob/main/Lost-Found%20Management/app.py this will give undertstanding of def and other variables understadning with  edit
+#Code from Copilot Ai that it automatically modfiy functions update_item_status and delete_item within logic then i change according to my attributes
+# ======================================
+# UPDATE STATUS ONLY
+# ======================================
+def update_item_status(item_id, new_status):
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("""
+        UPDATE items
+        SET status = ?
+        WHERE item_id = ?
+    """, (new_status, item_id))
+
+    affected_rows = cur.rowcount  # Get rowcount BEFORE closing
+    conn.commit()
+    conn.close()  # Close connection to persist changes
+    return affected_rows > 0
 
 
-def edit_item(item_id):
-    item = Item.query.get_or_404(item_id)
-
-    if request.method == 'POST':
-        item.name = request.form['name']
-        item.description = request.form['description']
-        item.category_id = request.form['category']
-        item.status = request.form['status']
-        item.date = request.form['date']
-        image_file = request.files['image_file']
-
-        if image_file:
-            image_filename = secure_filename(image_file.filename)
-            image_file.save(f'static/images/{image_filename}')
-            item.image_file = image_filename
-
-        db.session.commit()
-        flash('Item updated successfully.', 'success')
-        return redirect(url_for('home_page'))
-
-    categories = Category.query.all()
-    return render_template('edit_item.html', item=item, categories=categories)
-
+# ======================================
+# DELETE ITEM
+# ======================================
 def delete_item(item_id):
-    item = Item.query.get_or_404(item_id)
-    db.session.delete(item)
-    db.session.commit()
-    flash('Item deleted successfully.', 'success')
-    return redirect(url_for('home_page'))
+    conn = get_db()
+    cur = conn.cursor()
 
-@app.route('/item/<int:item_id>')
+    cur.execute("DELETE FROM items WHERE item_id = ?", (item_id,))
+    affected_rows = cur.rowcount  # Get rowcount BEFORE closing
+    conn.commit()
+    conn.close()  # Close connection to persist changes
+
+    return affected_rows > 0
