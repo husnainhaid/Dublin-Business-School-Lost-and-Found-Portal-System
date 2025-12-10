@@ -1,14 +1,13 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
- 
+
   --primary-color: #1e40af;
   --primary-dark: #1e3a8a;
   --primary-light: #3b82f6;
   --secondary-color: #0891b2;
   --accent-color: #f59e0b;
-  
+
   /* Neutral Colors */
   --white: #ffffff;
   --gray-50: #f9fafb;
@@ -21,18 +20,18 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-  
+
   /* Status Colors */
   --status-unclaimed: #ef4444;
   --status-claimed: #f59e0b;
   --status-returned: #10b981;
-  
+
   /* Semantic Colors */
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
   --info: #3b82f6;
-  
+
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-xs: 0.75rem;
@@ -43,7 +42,7 @@
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
-  
+
   /* Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -51,25 +50,25 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-full: 9999px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
+
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
   --transition-base: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
-  
+
   /* Layout */
   --max-width: 1280px;
   --header-height: 70px;
@@ -440,12 +439,14 @@ a {
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 1200px;
 }
 
 .table thead {
@@ -467,6 +468,7 @@ a {
   padding: var(--spacing-md) var(--spacing-lg);
   border-bottom: 1px solid var(--gray-200);
   color: var(--gray-700);
+  white-space: nowrap;
 }
 
 .table tbody tr {
@@ -480,6 +482,8 @@ a {
 .table-actions {
   display: flex;
   gap: var(--spacing-sm);
+  min-width: 120px;
+  justify-content: center;
 }
 
 
@@ -585,13 +589,42 @@ a {
   text-align: right;
 }
 
-.mt-1 { margin-top: var(--spacing-md); }
-.mt-2 { margin-top: var(--spacing-lg); }
-.mt-3 { margin-top: var(--spacing-xl); }
+.mt-1 {
+  margin-top: var(--spacing-md);
+}
 
-.mb-1 { margin-bottom: var(--spacing-md); }
-.mb-2 { margin-bottom: var(--spacing-lg); }
-.mb-3 { margin-bottom: var(--spacing-xl); }
+.mt-2 {
+  margin-top: var(--spacing-lg);
+}
+
+.mt-3 {
+  margin-top: var(--spacing-xl);
+}
+
+.mt-1 {
+  margin-top: var(--spacing-md);
+}
+
+.mt-2 {
+  margin-top: var(--spacing-lg);
+}
+
+.mt-3 {
+  margin-top: var(--spacing-xl);
+}
+
+.mb-1 {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mb-3 {
+  margin-bottom: var(--spacing-xl);
+}
+
 
 .hidden {
   display: none !important;
@@ -602,6 +635,7 @@ a {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -612,6 +646,7 @@ a {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -624,7 +659,7 @@ a {
     --font-size-3xl: 1.5rem;
     --font-size-4xl: 1.875rem;
   }
-  
+
   .navbar-menu {
     display: none;
     position: absolute;
@@ -636,36 +671,36 @@ a {
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-lg);
   }
-  
+
   .navbar-menu.active {
     display: flex;
   }
-  
+
   .navbar-toggle {
     display: block;
   }
-  
+
   .cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .hero-actions {
     flex-direction: column;
   }
-  
+
   .filter-controls {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .table-wrapper {
     overflow-x: auto;
   }
-  
+
   .table {
-    min-width: 600px;
+    min-width: 1200px;
   }
-  
+
   .modal {
     margin: var(--spacing-md);
   }
@@ -675,15 +710,15 @@ a {
   .container {
     padding: var(--spacing-md);
   }
-  
+
   .form {
     padding: var(--spacing-lg);
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }

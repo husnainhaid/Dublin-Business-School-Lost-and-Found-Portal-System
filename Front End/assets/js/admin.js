@@ -1,22 +1,4 @@
-
-(function(){
-  const form = document.getElementById('adminLoginForm');
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const username = (fd.get('username')||'').toString().trim();
-    const password = (fd.get('password')||'').toString();
-    if (username === 'admin' && password === 'admin123') {
-      sessionStorage.setItem('isAdmin', 'true');
-      Toast.success('Login successful', 'Welcome');
-      setTimeout(() => { window.location.href = 'admin.html'; }, 500);
-    } else {
-      Toast.error('Invalid login credentials', 'Login Failed');
-    }
-
-     });
-})();
-//# admin.js script:
+// Admin Dashboard Script
 import { getItems, updateItem, deleteItem } from "./apicall.js";
 import { showToast } from "./toast.js";
 let allItems = [];
@@ -111,7 +93,7 @@ function getStatusClass(status) {
 
 
 itemsTableBody.addEventListener("click", async (e) => {
-    
+
     if (e.target.closest(".update-status-btn")) {
         const btn = e.target.closest(".update-status-btn");
         const id = parseInt(btn.dataset.id);
@@ -120,7 +102,7 @@ itemsTableBody.addEventListener("click", async (e) => {
         showStatusModal(id, currentStatus, itemName);
     }
 
-    
+
     if (e.target.closest(".delete-item-btn")) {
         const btn = e.target.closest(".delete-item-btn");
         const id = parseInt(btn.dataset.id);
@@ -134,7 +116,7 @@ itemsTableBody.addEventListener("click", async (e) => {
 */
 //code from chatgpt: https://chatgpt.com/c/69305867-6b3c-8331-bed3-f1d795077f44 that implement modal logic  structure
 function showStatusModal(id, currentStatus, itemName) {
-    
+
     const modalHTML = `
         <div class="modal-overlay" id="statusModal" style="display: flex;">
             <div class="modal">
@@ -162,7 +144,7 @@ function showStatusModal(id, currentStatus, itemName) {
             </div>
         </div>
     `;
-      
+
     const existingModal = document.getElementById('statusModal');
     if (existingModal) {
         existingModal.remove();
@@ -175,13 +157,13 @@ function showStatusModal(id, currentStatus, itemName) {
     document.getElementById('cancelStatusBtn').addEventListener('click', closeStatusModal);
     document.getElementById('updateStatusBtn').addEventListener('click', () => updateStatusFromModal(id));
 
-    
+
     document.getElementById('statusModal').addEventListener('click', (e) => {
         if (e.target.id === 'statusModal') {
             closeStatusModal();
         }
     });
-   
+
 }
 
 /* 
@@ -213,10 +195,10 @@ async function updateStatusFromModal(id) {
 }
 
 /**https://github.com/Nycto/PicoModal/blob/master/src/picoModal.js get the code logic  from that template to show delete confirmation proper */
-    /** Manages setting the 'overflow: hidden' on the body tag */
-    
+/** Manages setting the 'overflow: hidden' on the body tag */
 
-    
+
+
 /*   Code from Copilot to SHOW DELETE CONFIRMATION MODAL according to my sequence and structure 
 */
 function showDeleteModal(id, itemName) {
@@ -282,14 +264,25 @@ function closeDeleteModal() {
    CONFIRM DELETE
 */
 async function confirmDelete(id) {
-    const result = await deleteItem(id);
+    console.log("🗑️ confirmDelete called with ID:", id);
 
-    if (result.success) {
-        showToast("Item deleted successfully", "success");
+    try {
+        const result = await deleteItem(id);
+        console.log("📡 Delete API result:", result);
+
+        if (result.success) {
+            console.log("✅ Delete successful, refreshing table");
+            showToast("Item deleted successfully", "success");
+            closeDeleteModal();
+            loadItems();
+        } else {
+            console.log("❌ Delete failed, result.success is false");
+            showToast("Failed to delete item", "error");
+        }
+    } catch (error) {
+        console.error("💥 Delete error:", error);
+        showToast("Error deleting item: " + error.message, "error");
         closeDeleteModal();
-        loadItems();
-    } else {
-        showToast("Failed to delete item", "error");
     }
 }
 

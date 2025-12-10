@@ -47,7 +47,7 @@ def update_status(item_id):
     return jsonify({"success": updated})
 # DELETE ITEM (DELETE /items/<id>)
 # Called by admin dashboard delete button
-@app.delete("/items/<int:item_id>")
+@app.route("/items/<int:item_id>", methods=['DELETE'])
 def remove_item(item_id):
     deleted = delete_item(item_id)
     return jsonify({"success": deleted})
