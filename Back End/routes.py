@@ -45,3 +45,9 @@ def update_status(item_id):
     updated = update_item_status(item_id, new_status)
 
     return jsonify({"success": updated})
+# DELETE ITEM (DELETE /items/<id>)
+# Called by admin dashboard delete button
+@app.delete("/items/<int:item_id>")
+def remove_item(item_id):
+    deleted = delete_item(item_id)
+    return jsonify({"success": deleted})
