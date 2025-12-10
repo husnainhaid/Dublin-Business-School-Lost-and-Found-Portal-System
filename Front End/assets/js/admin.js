@@ -266,3 +266,50 @@ function showDeleteModal(id, itemName) {
         }
     });
 }
+
+/* 
+   CLOSE DELETE MODAL
+*/
+function closeDeleteModal() {
+    const modal = document.getElementById('deleteModal');
+    if (modal) {
+        modal.remove();
+    }
+    document.body.style.overflow = '';
+}
+
+/* 
+   CONFIRM DELETE
+*/
+async function confirmDelete(id) {
+    const result = await deleteItem(id);
+
+    if (result.success) {
+        showToast("Item deleted successfully", "success");
+        closeDeleteModal();
+        loadItems();
+    } else {
+        showToast("Failed to delete item", "error");
+    }
+}
+
+/* 
+   ESCAPE HTML
+ */
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text ?? "";
+    return div.innerHTML;
+}
+
+/* 
+   FORMAT DATE
+ */
+function formatDate(dateString) {
+    const d = new Date(dateString);
+    return d.toLocaleDateString("en-IE", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+    });
+}
