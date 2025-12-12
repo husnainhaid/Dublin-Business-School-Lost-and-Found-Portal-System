@@ -27,9 +27,9 @@ reportForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value.trim();
-  /* Email VALIDATION must required valid  */
-    if (!email.toLowerCase().endsWith("@dbs.ie")) {
-        showToast("Please enter a valid DBS email address (example@dbs.ie).", "error", 5000);
+    
+  if (!email.toLowerCase().endsWith("@mydbs.ie")) {
+        showToast("Please enter a valid DBS email address (example@mydbs.ie).", "error", 5000);
         return;
     }
     /* PHONE VALIDATION must required valid */
