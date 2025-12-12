@@ -43,6 +43,17 @@ def create_item(data):
     item_id = cur.lastrowid
     conn.close()
     return item_id
+def email_exists(email):
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT 1 FROM items WHERE student_email = ?",
+        (email,)
+    )
+
+    return cur.fetchone() is not None
+
 
 
 def get_all_items():

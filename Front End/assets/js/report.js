@@ -60,6 +60,17 @@ reportForm.addEventListener("submit", async (e) => {
 
     const res = await createItem(data);
 
+
+    // Email already exists
+if (res.success === false) {
+    showToast(
+        res.message || "Email already exists. Please use a different email.",
+        "error",
+        5000
+    );
+    return; // 🚫 stop submission
+}
+//Success case
     if (res.success === true) {
         showToast(res.Status, "success", 5000);
         reportForm.reset();

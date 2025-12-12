@@ -8,6 +8,7 @@ from models import (
     get_all_items,
     update_item_status,
     delete_item,
+     email_exists
     
 )
 
@@ -36,6 +37,13 @@ def admin_login_route():
 @app.post("/items")
 def add_item():
     data = request.json
+    email = data.get("student_email")
+    if email_exists(email):
+        return jsonify({
+            "success": False,
+            "message": "This email already exists. Item cannot be reported again."
+        }), 400
+    
     item_id = create_item(data)
     return jsonify({"success": True, "item_id": item_id, "Status": "Item reported successfully! Admin will review it soon."})
 
