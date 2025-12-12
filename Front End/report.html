@@ -27,126 +27,124 @@
 
             <ul class="navbar-menu" id="navMenu">
                 <li><a href="Index.html" class="navbar-link">Home</a></li>
-                
-                
-                <li><a href="admin.html" class="navbar-link">Login</a></li>
+
+
+                <li><a href="admin-login.html" class="navbar-link">Login</a></li>
             </ul>
         </div>
     </nav>
 
-     <!-- Main Content -->
+    <!-- Main Content -->
     <main class="container">
-<!-- Page Header -->
+        <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">Report a Lost Item</h1>
             <p class="page-subtitle">Found something on campus? Help us reunite it with its owner</p>
         </div>
         <form class="form" id="reportForm">
 
-           
-    <div class="form-group">
-        <label for="studentName" class="form-label">Student Name *</label>
-        <input type="text" id="studentName" name="studentName" class="form-input" 
-               placeholder="Your full name" required>
-    </div>
+
+            <div class="form-group">
+                <label for="studentName" class="form-label">Student Name *</label>
+                <input type="text" id="studentName" name="studentName" class="form-input" placeholder="Your full name"
+                    required>
+            </div>
 
 
-    <div class="form-group">
-        <label for="itemName" class="form-label">Item Name *</label>
-        <input type="text" id="itemName" name="itemName" class="form-input"
-               placeholder="e.g., Black Backpack, iPhone, Water Bottle" required>
-    </div>
-       <div class="form-group">
-        <label for="description" class="form-label">Description *</label>
-        <textarea id="description" name="description" class="form-textarea"
-            placeholder="Color, brand, features, contents…" required></textarea>
-    </div>
+            <div class="form-group">
+                <label for="itemName" class="form-label">Item Name *</label>
+                <input type="text" id="itemName" name="itemName" class="form-input"
+                    placeholder="e.g., Black Backpack, iPhone, Water Bottle" required>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Description *</label>
+                <textarea id="description" name="description" class="form-textarea"
+                    placeholder="Color, brand, features, contents…" required></textarea>
+            </div>
 
-    <div class="form-group">
-        <label for="location" class="form-label">Last Seen Location *</label>
-        <select id="location" name="location" class="form-select" required>
-            <option value="">-- Select Location --</option>
-            <option value="Library - Ground Floor">Library - Ground Floor</option>
-            <option value="Library - 1st Floor">Library - 1st Floor</option>
-            <option value="Library - 2nd Floor">Library - 2nd Floor</option>
-            <option value="Cafeteria">Cafeteria</option>
-            <option value="Student Lounge">Student Lounge</option>
-            <option value="Lecture Hall A">Lecture Hall A</option>
-            <option value="Lecture Hall B">Lecture Hall B</option>
-            <option value="Computer Lab 1">Computer Lab 1</option>
-            <option value="Computer Lab 2">Computer Lab 2</option>
-            <option value="Main Entrance">Main Entrance</option>
-            <option value="Reception Area">Reception Area</option>
-            <option value="Courtyard">Courtyard</option>
-            <option value="Parking Area">Parking Area</option>
-            <option value="Other">Other</option>
-        </select>
-    </div>
+            <div class="form-group">
+                <label for="location" class="form-label">Last Seen Location *</label>
+                <select id="location" name="location" class="form-select" required>
+                    <option value="">-- Select Location --</option>
+                    <option value="Library - Ground Floor">Library - Ground Floor</option>
+                    <option value="Library - 1st Floor">Library - 1st Floor</option>
+                    <option value="Library - 2nd Floor">Library - 2nd Floor</option>
+                    <option value="Cafeteria">Cafeteria</option>
+                    <option value="Student Lounge">Student Lounge</option>
+                    <option value="Lecture Hall A">Lecture Hall A</option>
+                    <option value="Lecture Hall B">Lecture Hall B</option>
+                    <option value="Computer Lab 1">Computer Lab 1</option>
+                    <option value="Computer Lab 2">Computer Lab 2</option>
+                    <option value="Main Entrance">Main Entrance</option>
+                    <option value="Reception Area">Reception Area</option>
+                    <option value="Courtyard">Courtyard</option>
+                    <option value="Parking Area">Parking Area</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
 
-    <div class="form-group">
-        <label for="dateLost" class="form-label">Date Lost *</label>
-        <input type="date" id="dateLost" name="dateLost" class="form-input" required>
-    </div>
+            <div class="form-group">
+                <label for="dateLost" class="form-label">Date Lost *</label>
+                <input type="date" id="dateLost" name="dateLost" class="form-input" required>
+            </div>
 
-    <div class="form-group">
-        <label for="category" class="form-label">Category *</label>
-        <select id="category" name="category" class="form-select" required>
-            <option value="">Select Category</option>
-            <option>Electronics</option>
-            <option>Clothing</option>
-            <option>Wallet / ID Card</option>
-            <option>Accessories</option>
-            <option>Bags</option>
-            <option>Books</option>
-            <option>Keys</option>
-            <option>Other</option>
-        </select>
-    </div>
+            <div class="form-group">
+                <label for="category" class="form-label">Category *</label>
+                <select id="category" name="category" class="form-select" required>
+                    <option value="">Select Category</option>
+                    <option>Electronics</option>
+                    <option>Clothing</option>
+                    <option>Wallet / ID Card</option>
+                    <option>Accessories</option>
+                    <option>Bags</option>
+                    <option>Books</option>
+                    <option>Keys</option>
+                    <option>Other</option>
+                </select>
+            </div>
 
-    
 
-    <div class="form-group">
-        <label for="email" class="form-label">Student Email *</label>
-        <input type="email" id="email" name="email" class="form-input"
-               placeholder="yourname@dbs.ie" required>
-    </div>
 
-    
-    <div class="form-group">
-        <label for="phone" class="form-label">Phone Number *</label>
-        <input type="tel" id="phone" name="phone" class="form-input"
-               placeholder="+353 85 123 4567" required>
-    </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Student Email *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="yourname@dbs.ie" required>
+            </div>
 
-    
-    <div class="form-group">
-        <label for="itemImage" class="form-label">Item Photo (Optional)</label>
-        <input type="file" id="itemImage" name="itemImage" class="form-file" accept="image/*">
-        <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
-            Upload a photo to help us identify your item.
-        </p>
-    </div>
 
-   
-    <div id="imagePreviewContainer" class="image-preview hidden">
-        <img id="imagePreview" src="" alt="Item preview">
-    </div>
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+353 85 123 4567" required>
+            </div>
 
-   
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            Submit Report
-        </button>
-    </div>
 
-    <p style="font-size: 0.875rem; color: #6b7280; text-align: center;">
-        * Required fields. Your information is used only to help reunite lost items.
-    </p>
-</main>
-    </form>
+            <div class="form-group">
+                <label for="itemImage" class="form-label">Item Photo (Optional)</label>
+                <input type="file" id="itemImage" name="itemImage" class="form-file" accept="image/*">
+                <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
+                    Upload a photo to help us identify your item.
+                </p>
+            </div>
 
-    
-   
+
+            <div id="imagePreviewContainer" class="image-preview hidden">
+                <img id="imagePreview" src="" alt="Item preview">
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                    Submit Report
+                </button>
+            </div>
+
+            <p style="font-size: 0.875rem; color: #6b7280; text-align: center;">
+                * Required fields. Your information is used only to help reunite lost items.
+            </p>
+        </form>
+    </main>
+
+
+
     <footer class="footer">
         <div class="footer-content">
             <p class="footer-text">
@@ -155,11 +153,10 @@
         </div>
     </footer>
 
-    
-    <script src="js/toast.js"></script>
-    
-    <script src="js/report.js"></script>
-    
+
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/report.js" type="module"></script>
+
 </body>
 
 </html>

@@ -1,5 +1,14 @@
 const BASE_URL = "http://localhost:5000";
 
+export async function adminLogin(username, password) {
+    const response = await fetch(`${BASE_URL}/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    });
+    const result = await response.json();
+    return result;
+}
 /* 
    CREATE ITEM (Report Form)
  */

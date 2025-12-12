@@ -19,7 +19,6 @@
     <nav class="nav">
       <a href="index.html" class="btn">Home</a>
       
-      <a href="report.html" class="btn">Report</a>
     </nav>
   </header>
   <main class="container">
@@ -28,11 +27,11 @@
       <form id="adminLoginForm" class="form-grid">
         <label>
           <span class="form-label fw-semibold">Username</span>
-          <input type="text" name="username" required placeholder="admin" />
+          <input type="text"  id="username"  name="username" required placeholder="admin" />
         </label>
         <label>
           <span class="form-label fw-semibold">Password</span>
-          <input type="password" name="password" required placeholder="••••••••" />
+          <input type="password"   id="password" name="password" required placeholder="••••••••" />
         </label>
         <div class="form-actions">
           <button type="submit" class="btn primary">Login</button>
@@ -46,6 +45,6 @@
   </footer>
 
   <script src="assets/js/toast.js"></script>
-  <script src="assets/js/admin.js"></script>
+  <script type="module"  src="assets/js/admin-login.js"></script>
 </body>
 </html>
