@@ -3,11 +3,30 @@
 from flask import request, jsonify
 from app import app
 from models import (
+    admin_login,
     create_item,
     get_all_items,
     update_item_status,
-    delete_item
+    delete_item,
+    
 )
+
+
+@app.post("/admin/login")
+def admin_login_route():
+    data = request.json
+    user = admin_login(data["username"], data["password"])
+
+    if user:
+        return jsonify({
+            "success": True,
+            "Status": "Admin successfully logged in"
+        })
+    else:
+        return jsonify({
+            "success": False,
+            "Status": "User Name or Password Incorrect"
+        }), 401
 
 
 # 

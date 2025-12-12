@@ -2,6 +2,21 @@
 # i get the structure from there to create(insert a lost items into database) and read to get data back to store in database
 from database import get_db
 
+def admin_login(username, password):
+    """
+    Verify admin credentials manually without database.
+    Hardcoded credentials: username='admin', password='admin123'
+    """
+    # Hardcoded admin credentials
+    ADMIN_USERNAME = "admin"
+    ADMIN_PASSWORD = "admin123"
+    
+    # Check if credentials match
+    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        return True
+    return False
+
+
 # CREATE (Insert new lost item)
 def create_item(data):
     """Insert a new lost item into the database."""
