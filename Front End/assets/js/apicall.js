@@ -53,4 +53,11 @@ export async function deleteItem(id) {
 
     return await response.json();
 }
+/* 
+   getStatusItems code from claude sonnet ai that implement loadStatusItems() based on my backend API and database schema
+ */
+export async function getStatusItems() {
+    const response = await fetch(`${BASE_URL}/ClaimedItems`);
+    return await response.json();
+}
 

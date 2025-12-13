@@ -1,11 +1,55 @@
 // Admin Dashboard Script
-import { getItems, updateItem, deleteItem } from "./apicall.js";
+import { getItems, updateItem, deleteItem,getStatusItems } from "./apicall.js";
 import { showToast } from "./toast.js";
 let allItems = [];
+//Reference:https://github.com/prince-c11/lost-found-management  took the idea from there then claude sonnet ai build this code  that implement loadStatusItems() based on my backend API and database schema
+async function loadStatusItems() {
+    try {
+        const data = await getStatusItems();
+
+        // ✅ overwrite global state
+        allItems = data.map(item => ({
+            id: item.item_id,
+            student_name: item.student_name,
+            item_name: item.item_name,
+            description: item.description,
+            location: item.location,
+            date_lost: item.date_lost,
+            category: item.category,
+            email: item.student_email,
+            phone: item.phone_number,
+            status: item.status
+        }));
+
+        console.log("Claimed Items:", allItems);
+
+        renderTable(); // ✅ THIS updates HTML
+
+    } catch (error) {
+        console.error("Error loading claimed items:", error);
+    }
+}
 
 
 const itemsTableBody = document.getElementById("itemsTableBody");
 const noItems = document.getElementById("noItems");
+
+//code from claude sonnet ai that implement setActive function to handle button active state
+function setActive(btnId) {
+    document.querySelectorAll(".button-group .btn")
+        .forEach(btn => btn.classList.remove("active"));
+    document.getElementById(btnId).classList.add("active");
+}
+
+document.getElementById("AllItemsBtn").addEventListener("click", () => {
+    setActive("AllItemsBtn");
+    loadItems();
+});
+
+document.getElementById("ClaimedItemsBtn").addEventListener("click", () => {
+    setActive("ClaimedItemsBtn");
+    loadStatusItems();
+});
 
 
 document.addEventListener("DOMContentLoaded", loadItems);

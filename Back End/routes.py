@@ -8,7 +8,8 @@ from models import (
     get_all_items,
     update_item_status,
     delete_item,
-     email_exists
+    ClaimData,
+    email_exists
     
 )
 
@@ -17,6 +18,7 @@ from models import (
 def admin_login_route():
     data = request.json
     user = admin_login(data["username"], data["password"])
+
 
     if user:
         return jsonify({
@@ -78,3 +80,8 @@ def update_status(item_id):
 def remove_item(item_id):
     deleted = delete_item(item_id)
     return jsonify({"success": deleted})
+
+@app.get("/ClaimedItems")
+def claimed_items():
+    items = ClaimData()
+    return jsonify(items)

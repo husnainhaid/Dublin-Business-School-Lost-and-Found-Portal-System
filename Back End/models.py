@@ -102,3 +102,13 @@ def delete_item(item_id):
     conn.close()  # Close connection to persist changes
 
     return affected_rows > 0
+
+def ClaimData():
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM items WHERE status = 'CLAIMED'")
+    rows = cur.fetchall()
+    conn.commit()
+
+    return [dict(row) for row in rows]
