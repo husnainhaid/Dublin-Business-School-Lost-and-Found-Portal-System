@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "instance", "items.db")
 
-# Reference :https://github.com/MarkRaffy28/el5-fp/blob/main/main.py then implement changes  to my attributes
+# Reference :https://github.com/MarkRaffy28/el5-fp/blob/main/main.py then implement changes  to my attributes with chatgpt
 def get_db():
     """Implement changes code to my database  ."""
     conn = sqlite3.connect(DB_PATH)
