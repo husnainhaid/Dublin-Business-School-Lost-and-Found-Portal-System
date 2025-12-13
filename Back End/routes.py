@@ -12,7 +12,7 @@ from models import (
     email_exists
     
 )
-
+from emailServices import send_claimed_email
 
 @app.post("/admin/login")
 def admin_login_route():
@@ -62,7 +62,7 @@ def list_items():
 # 
 # UPDATE ITEM STATUS (PUT /items/<id>)
 # Called when admin updates CLAIMED / UNCLAIMED / RETURNED
-# 
+# Reference code of email there:chatgpt 
 @app.put("/items/<int:item_id>")
 def update_status(item_id):
     data = request.json
@@ -71,7 +71,25 @@ def update_status(item_id):
     if not new_status:
         return jsonify({"success": False, "error": "No status provided"}), 400
 
+    # 1️⃣ Get the item before update (to know the user's email)
+    items = get_all_items()
+    item_to_update = next((item for item in items if item["item_id"] == item_id), None)
+    if not item_to_update:
+        return jsonify({"success": False, "error": "Item not found"}), 404
+
+    # 2️⃣ Update the status
     updated = update_item_status(item_id, new_status)
+
+    # 3️⃣ Send email only if new status is CLAIMED
+    if updated and new_status == "CLAIMED":
+        user_email = item_to_update.get("student_email")
+        item_name = item_to_update.get("item_name")
+        student_name = item_to_update.get("student_name")
+        email_sent = send_claimed_email(user_email,student_name,item_name)
+        if email_sent:
+            print(f"Email sent to {user_email} for item {item_name}")
+        else:
+            print(f"Failed to send email to {user_email}")
 
     return jsonify({"success": updated})
 # DELETE ITEM (DELETE /items/<id>)
