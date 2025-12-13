@@ -1,10 +1,5 @@
-"""
-test_api.py
------------
 
-Basic API tests for Flask endpoints.
-"""
-
+#code from claude ai
 from app import app
 
 def test_get_items():
