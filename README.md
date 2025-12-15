@@ -1,5 +1,5 @@
 # 🎓 Dublin Business School - Lost and Found Portal System
-
+# Reference from Chatgpt proper Readme.md suddenly today in morning and i also do change the its auto created licence i dont see that 
 <div align="center">
 
 ![DBS Logo](Front%20End/assets/logo.png)
@@ -10,7 +10,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 
 [Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [API Documentation](#-api-documentation) • [Deployment](#-deployment)
 
@@ -29,7 +29,7 @@
 - [API Documentation](#-api-documentation)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-license)
+
 - [Contact](#-contact)
 
 ---
@@ -465,11 +465,7 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 📞 Contact
 
