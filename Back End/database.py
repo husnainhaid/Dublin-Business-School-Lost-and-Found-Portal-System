@@ -1,8 +1,11 @@
 import sqlite3
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "instance", "items.db")
+# Create instance folder if it doesn't exist
+INSTANCE_DIR = os.path.join(BASE_DIR, "instance")
+os.makedirs(INSTANCE_DIR, exist_ok=True)
+
+DB_PATH = os.path.join(INSTANCE_DIR, "items.db")
 
 # Reference :https://github.com/MarkRaffy28/el5-fp/blob/main/main.py then implement changes  to my attributes with chatgpt
 def get_db():
