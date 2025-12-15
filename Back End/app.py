@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from database import create_tables
-
+import os
 # 
 # INITIALIZE FLASK APP
 # 
@@ -22,4 +22,5 @@ from routes import *
 # RUN THE SERVER
 # 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)

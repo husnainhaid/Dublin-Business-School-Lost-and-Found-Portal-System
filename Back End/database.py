@@ -1,6 +1,6 @@
 import sqlite3
 import os
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Create instance folder if it doesn't exist
 INSTANCE_DIR = os.path.join(BASE_DIR, "instance")
 os.makedirs(INSTANCE_DIR, exist_ok=True)
