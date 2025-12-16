@@ -1,10 +1,9 @@
 """
 Test suite for the DBS Lost and Found Portal System
 """
-import pytest
+import  pytest # pyright: ignore[reportMissingImports]/ 
 from app import app
 from database import get_db, create_tables
-
 
 class TestApp:
     """Test cases for the Flask application"""
@@ -60,3 +59,18 @@ class TestBasicFunctionality:
         items = [1, 2, 3]
         assert len(items) == 3
         assert 2 in items
+
+#PS C:\Users\Husnain\Downloads\Dublin Business School Lost and found Poratl System\BackEnd> py -m pytest test_app.py -v
+#========================================================================================== test session starts ==========================================================================================
+#platform win32 -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Husnain\AppData\Local\Programs\Python\Python313\python.exe
+#cachedir: .pytest_cache
+#rootdir: C:\Users\Husnain\Downloads\Dublin Business School Lost and found Poratl System\BackEnd
+#collected 7 items                                                                                                                                                                                        
+
+#test_app.py::TestApp::test_app_exists PASSED                                                                                                                                                       [ 14%] 
+#test_app.py::TestApp::test_app_is_testing PASSED                                                                                                                                                   [ 28%] 
+#test_app.py::TestDatabase::test_database_connection PASSED                                                                                                                                         [ 42%] 
+#test_app.py::TestDatabase::test_database_initialization PASSED                                                                                                                                     [ 57%] 
+#test_app.py::TestBasicFunctionality::test_addition PASSED                                                                                                                                          [ 71%] 
+#test_app.py::TestBasicFunctionality::test_string_operations PASSED                                                                                                                                 [ 85%] 
+#test_app.py::TestBasicFunctionality::test_list_operations PASSED 
