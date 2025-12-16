@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://husnainhaider12.pythonanywhere.com";
 
 export async function adminLogin(username, password) {
     const response = await fetch(`${BASE_URL}/admin/login`, {
